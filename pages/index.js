@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from '../components/header'
 import Layout from '../components/layout'
+import Banner from '../components/banner'
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       </Head>
 
       <Header />
+      <Banner  /> 
     </Layout>
   )
 }
