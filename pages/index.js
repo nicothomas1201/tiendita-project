@@ -2,8 +2,29 @@ import Head from 'next/head'
 import Header from '../components/header'
 import Layout from '../components/layout'
 import Banner from '../components/banner'
+import SectionProducts from '../components/section-products'
+import { useState, useEffect } from 'react'
+import db from '../db/index'
+import SectionProductsContainer from '../components/section-products-container'
+
 
 export default function Home() {
+  let [popular, setAllPopular] = useState(null)
+  let [offertProducts, setOffertProducts] = useState(null)
+
+
+  useEffect(() => {
+    if(db){
+      let productsOffert = db.filter( product  => product.price.offert)
+      setOffertProducts(productsOffert)
+      let mostPopularProduct = db.filter( product => product.popular)
+      setAllPopular(mostPopularProduct)
+
+    }
+  }, [])
+
+
+
   return (
     <Layout>
       <Head>
@@ -12,7 +33,12 @@ export default function Home() {
       </Head>
 
       <Header />
-      <Banner  /> 
+      <Banner  />
+      <SectionProductsContainer>
+        <SectionProducts title="Ofertas" products={offertProducts} />
+        <SectionProducts title="Lo más popular" products={popular} mostPopular={true} />
+      </SectionProductsContainer>
+
     </Layout>
   )
 }

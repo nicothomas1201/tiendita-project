@@ -3,7 +3,7 @@ import banner from '../images/banner.png'
 
 const BannerStyled = styled.div`
 
-  padding: 1.5rem 0;
+  padding: 2.5rem 0;
 
   .banner-img{
     position: relative;

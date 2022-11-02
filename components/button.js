@@ -8,6 +8,7 @@ const ButtonStyled = styled.button`
   border: none;
   font: var(--button);
   cursor: pointer;
+  /* flex: 1; */
 `
 
 const ButtonIconStyled = styled(ButtonStyled)`
