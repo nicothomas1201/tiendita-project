@@ -9,6 +9,8 @@ const ButtonStyled = styled.button`
   font: var(--button);
   cursor: pointer;
   /* flex: 1; */
+
+  ${({disabled}) => disabled ? 'opacity: 0.5;': 'opacity: 1;'}
 `
 
 const ButtonIconStyled = styled(ButtonStyled)`
@@ -39,7 +41,7 @@ const ButtonShoppingStyled = styled(ButtonStyled)`
   }
 `
 
-export function Button({text, icon}) {
+export function Button({text, icon,  disabled, onClick}) {
   if(icon){
     return (
       <ButtonIconStyled>
@@ -49,7 +51,7 @@ export function Button({text, icon}) {
     )
   } else{
     return (
-      <ButtonStyled>
+      <ButtonStyled disabled={disabled} onClick={onClick}  >
         {text}
       </ButtonStyled>
     )

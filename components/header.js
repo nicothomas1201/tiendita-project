@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Location from './location'
 import Divider from './divider'
-import { Button, ButtonShopping} from './button'
+import { Button } from './button'
 import Icon from './icons'
 
 const HeaderStyled = styled.div`
@@ -23,14 +23,17 @@ const HeaderStyled = styled.div`
 
 `
 
-function Header() {
+function Header({setModal, address}) {
   // console.log(Buttons)
+  function handleClick(){
+    setModal(true)
+  }
 
   return (
     <HeaderStyled>
       <h2 className='header-logo'>Tiendita</h2>
       <div className='header-actions'>
-        <Location location="México City Marriott Reforma Hotel..." />
+        <Location onClick={handleClick} location={address}/>
         <Divider />
         <Button text={0} icon={<Icon name="cart" color="var(--white)" />}/>
       </div>
