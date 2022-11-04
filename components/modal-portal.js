@@ -3,6 +3,7 @@ import ModalLocation from './modal-location'
 import { useEffect, useState } from 'react'
 import Overlay from './overlay'
 import ModalContentBase from './modal-content-base'
+import ModalProduct from './modal-product'
 
 
 
@@ -28,18 +29,33 @@ function ModalPortal({ children }){
 
 
 
-function Modal({isActive, setModal, setAddress}){
+function Modal({modal, setModal, setAddress, product, type}){
 
   function handleClick(){
     setModal(false)
   }
 
-  if(isActive){
+  function selectModal(type){
+    switch (type){
+      case 'product': {
+        return <ModalProduct  product={product}/>
+      }
+      case 'location':{
+        return <ModalLocation setAddress={setAddress} setModal={setModal}/>
+      }
+
+      default: console.log('working on')
+
+    }
+
+  }
+
+  if(modal.show){
     return (
       <ModalPortal>
         <Overlay>
           <ModalContentBase closeModal={handleClick}>
-            <ModalLocation setAddress={setAddress} setModal={setModal}/>
+            {selectModal(modal.type)}
           </ModalContentBase>
         </Overlay>
       </ModalPortal>

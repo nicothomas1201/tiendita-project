@@ -21,7 +21,7 @@ const SectionProductsStyled = styled.section`
 
 `
 
-function Section({ products, title }) {
+function Section({ products, title, setModal, setOneProduct }) {
 
 
 
@@ -30,7 +30,7 @@ function Section({ products, title }) {
       <h3 className="title">{title}</h3>
       <ProductCardList>
         {
-          products ? products.map((product, index) => <ProductCard product={product} key={index} />) : <span>Working on</span>
+          products ? products.map((product, index) => <ProductCard setOneProduct={setOneProduct} setModal={setModal} product={product} key={index} />) : <span>Working on</span>
         }
       </ProductCardList>
     </SectionProductsStyled>

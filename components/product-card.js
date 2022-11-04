@@ -11,9 +11,15 @@ const ProductCardStyled = styled.div`
   inline-size: 100%;
   max-inline-size: 12.125rem;
 
+  .image-product{
+    /* border: 1px solid red; */
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
 
-
-  
   .product-details{
     display: flex;
     flex-direction: column;
@@ -55,11 +61,25 @@ const ProductCardStyled = styled.div`
 
 `
 
-function ProductCard({product, mostPopular}) {
+function ProductCard({product, setModal, setOneProduct}) {
+
+
+  function handleClick(){
+    setModal({
+      type: 'product',
+      show: true
+    })
+    setOneProduct({
+      image: product.url,
+      name: product.name,
+      price: product.price,
+    })
+  }
+
   return (
     <ProductCardStyled>
-      { mostPopular ? <TabOfferts percentage={product.price.percentage} /> : null}
-      <div className="image-product">
+      { product.price.offert && !product.popular ? <TabOfferts percentage={product.price.percentage} /> : null}
+      <div className="image-product" onClick={handleClick}>
         <Image src={product.url} alt="" width={194} height={194} />
       </div>
       <div className="product-details">
@@ -82,7 +102,6 @@ function ProductCard({product, mostPopular}) {
       <Button className="product-button" text="Agregar" />
     </ProductCardStyled>
   )
-  
 }
 
 export default ProductCard

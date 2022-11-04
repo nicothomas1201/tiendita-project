@@ -9,6 +9,10 @@ const ModalContentBaseStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  max-inline-size: 55rem;
+  /* position: sticky; */
+  /* top: 0; */
+
 
   .button{
   padding: .5rem;

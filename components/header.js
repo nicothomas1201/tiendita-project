@@ -24,9 +24,11 @@ const HeaderStyled = styled.div`
 `
 
 function Header({setModal, address}) {
-  // console.log(Buttons)
   function handleClick(){
-    setModal(true)
+    setModal({
+      type: 'location',
+      show: true
+    })
   }
 
   return (
