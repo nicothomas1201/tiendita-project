@@ -7,7 +7,8 @@ import { useState, useEffect } from 'react'
 import db from '../db/index'
 import SectionProductsContainer from '../components/section-products-container'
 import Modal from '../components/modal-portal'
-
+import AddedCartAlert from '../components/added-cart-alert'
+import { useCartContext } from '../contexts/cart-context'
 
 export default function Home() {
   let [popular, setAllPopular] = useState(null)
@@ -15,7 +16,8 @@ export default function Home() {
   let [ modal, setModal ] = useState(false)
   let [ address, setAddress ] = useState('México City Marriott Reforma Hotel Puta')
   let [ oneSelectProduct, setOneProduct ] = useState()
-
+  let [ isAdded, setIsAdded ] = useState(false)
+  let { cart } = useCartContext() 
 
   useEffect(() => {
     if(db){
@@ -24,7 +26,16 @@ export default function Home() {
       let mostPopularProduct = db.filter( product => product.popular)
       setAllPopular(mostPopularProduct)
     }
-  }, [])
+
+    if(cart.length !== 0){
+      setIsAdded(true)
+      setTimeout(() => {
+        setIsAdded(false)
+      }, 2000)
+
+    }
+
+  }, [cart])
 
 
 
@@ -39,10 +50,11 @@ export default function Home() {
         setAddress={setAddress} 
         modal={modal} 
         setModal={setModal}
-        type='product'
+        address={address}
         />
 
-
+      {cart.length !== 0 ? <AddedCartAlert added={isAdded} /> : null}
+      
       <Header address={address} setModal={setModal} />
       <Banner  />
       <SectionProductsContainer>

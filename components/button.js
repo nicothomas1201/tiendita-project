@@ -44,7 +44,7 @@ const ButtonShoppingStyled = styled(ButtonStyled)`
 export function Button({text, icon,  disabled, onClick}) {
   if(icon){
     return (
-      <ButtonIconStyled>
+      <ButtonIconStyled onClick={onClick}>
         {icon}
         <span>{text}</span>
       </ButtonIconStyled>
@@ -70,6 +70,25 @@ export function ButtonShopping({ price, cuantity, text }){
   )
 }
 
+const ButtonCloseModalStyled = styled.button`
+  padding: .5rem;
+  display: flex;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--cocoabrown);
+  cursor: pointer; 
+  align-self: end;
+`
+
+export function ButtonCloseModal({icon, closeModal}){
+  return(
+    <ButtonCloseModalStyled onClick={closeModal}>
+      {icon}
+    </ButtonCloseModalStyled>
+  )
+
+}
 
 
 

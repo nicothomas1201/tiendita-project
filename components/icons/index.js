@@ -7,6 +7,7 @@ import Minus from './minus'
 import Plus from './plus'
 import RadioButtonActive from './radio-button-active'
 import RadioButton from './radio-button'
+import Check from './check'
 
 function Index({name, ...props}) {
   switch(name){
@@ -27,6 +28,8 @@ function Index({name, ...props}) {
     case 'button-active': return <RadioButtonActive {...props} />
     
     case 'button': return <RadioButton {...props} />
+
+    case 'check': return <Check {...props} />
     
     default: return null
 

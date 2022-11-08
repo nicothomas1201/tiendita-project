@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import TabOfferts from './tab-offerts'
 import Image from 'next/image'
 import { Button } from './button'
+import { useCartContext } from '../contexts/cart-context'
 
 const ProductCardStyled = styled.div`
   display: flex;
@@ -62,6 +63,7 @@ const ProductCardStyled = styled.div`
 `
 
 function ProductCard({product, setModal, setOneProduct}) {
+  let {cart, setCart} = useCartContext()
 
 
   function handleClick(){
@@ -69,11 +71,16 @@ function ProductCard({product, setModal, setOneProduct}) {
       type: 'product',
       show: true
     })
+
     setOneProduct({
       image: product.url,
       name: product.name,
       price: product.price,
     })
+  }
+
+  function handleAddCart(){
+    setCart([...cart, product])
   }
 
   return (
@@ -87,10 +94,10 @@ function ProductCard({product, setModal, setOneProduct}) {
           {
             product.price.offert ? (
               <>
-                <span className="offert-price">{product.price.offert}</span>
-                <span className="before-offert">{product.price.before_offert}</span>
+                <span className="offert-price">{`$${product.price.offert}`}</span>
+                <span className="before-offert">{`$${product.price.before_offert}`}</span>
               </>
-            ) : product.price
+            ) : `$${product.price}`
           }  
           
         </h4>
@@ -99,7 +106,7 @@ function ProductCard({product, setModal, setOneProduct}) {
           product.details ? <span className="und">{product.details}</span> : null
         }
       </div>
-      <Button className="product-button" text="Agregar" />
+      <Button onClick={handleAddCart} className="product-button" text="Agregar" />
     </ProductCardStyled>
   )
 }

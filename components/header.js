@@ -3,13 +3,14 @@ import Location from './location'
 import Divider from './divider'
 import { Button } from './button'
 import Icon from './icons'
+import { useCartContext } from '../contexts/cart-context'
 
 const HeaderStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 0;
-
+  
   .header-logo{
     font: var(--logo-font);
     color: var(--orange);
@@ -24,10 +25,20 @@ const HeaderStyled = styled.div`
 `
 
 function Header({setModal, address}) {
+  let { cart } = useCartContext()
+
   function handleClick(){
     setModal({
       type: 'location',
       show: true
+    })
+  }
+
+  function handleClickShopping(){
+    console.log('hola')
+    setModal({
+      type: 'cart',
+      show: true,
     })
   }
 
@@ -37,7 +48,7 @@ function Header({setModal, address}) {
       <div className='header-actions'>
         <Location onClick={handleClick} location={address}/>
         <Divider />
-        <Button text={0} icon={<Icon name="cart" color="var(--white)" />}/>
+        <Button onClick={handleClickShopping} text={cart.length} icon={<Icon name="cart" color="var(--white)" />}/>
       </div>
     </HeaderStyled>    
   )

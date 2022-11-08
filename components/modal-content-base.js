@@ -1,38 +1,24 @@
 import styled from 'styled-components'
 import Icon from './icons'
+import { ButtonCloseModal } from './button'
 
 const ModalContentBaseStyled = styled.div`
   background-color: var(--white);
   padding: 2.5rem;
-  border-radius: 1rem;
-  margin-block-start: 5rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   max-inline-size: 55rem;
-  /* position: sticky; */
-  /* top: 0; */
+  border-radius: 1rem; 
+  margin-block-start: 5rem;
 
-
-  .button{
-  padding: .5rem;
-  display: flex;
-  border: none;
-  box-sizing: border-box;
-  border-radius: 50%;
-  background: var(--cocoabrown);
-  cursor: pointer; 
-  align-self: end;
-}
-
+  
 `
 
-function ModalContentBase({children, closeModal}) {
+function ModalContentBase({children, closeModal, cart}) {
   return (
-    <ModalContentBaseStyled>
-      <button className="button" onClick={closeModal}>
-        <Icon name="close" color="var(--white)" />
-      </button>
+    <ModalContentBaseStyled cart={cart}>
+      <ButtonCloseModal icon={<Icon name="close" color="var(--white)" />} closeModal={closeModal} />
       {
         children
       }

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const ProductCardListStyled = styled.div`
   display: flex;
   gap: 3rem;
-  overflow: hidden;
+  overflow: auto;
 
 `
 

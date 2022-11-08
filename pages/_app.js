@@ -1,12 +1,12 @@
 import GlobalStyles from "../components/global-styles"
-import Modal from "../components/modal-portal"
+import { CartContextProvider } from "../contexts/cart-context"
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <CartContextProvider>
       <GlobalStyles />
       <Component {...pageProps} />
-    </>
+    </CartContextProvider>
   )
 }
 

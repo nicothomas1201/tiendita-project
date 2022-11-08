@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Overlay from './overlay'
 import ModalContentBase from './modal-content-base'
 import ModalProduct from './modal-product'
+import ModalCart from './modal-cart'
 
 
 
@@ -29,7 +30,7 @@ function ModalPortal({ children }){
 
 
 
-function Modal({modal, setModal, setAddress, product, type}){
+function Modal({modal, setModal, setAddress, product, address}){
 
   function handleClick(){
     setModal(false)
@@ -53,10 +54,13 @@ function Modal({modal, setModal, setAddress, product, type}){
   if(modal.show){
     return (
       <ModalPortal>
-        <Overlay>
-          <ModalContentBase closeModal={handleClick}>
-            {selectModal(modal.type)}
-          </ModalContentBase>
+        <Overlay cart={modal.type === 'cart' ? true : false}>
+          {modal.type !== 'cart' ? (
+            <ModalContentBase cart={modal.type === 'cart' ? true : false} closeModal={handleClick}>
+              {selectModal(modal.type)}
+            </ModalContentBase>
+          ): <ModalCart closeModal={handleClick} address={address} />}
+          
         </Overlay>
       </ModalPortal>
     )
