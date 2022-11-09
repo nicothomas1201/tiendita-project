@@ -63,8 +63,7 @@ function ModalCart({closeModal, address}) {
       <div className="cart-content">
         {
           cart.length === 0 ? <NoProduct closeModal={closeModal} /> : <ShoppingCartList setCart={setCart} cart={cart} />
-        }
-        
+        }        
       </div>
     </ModalCartStyled>
     

@@ -60,9 +60,9 @@ export function Button({text, icon,  disabled, onClick}) {
 
 }
 
-export function ButtonShopping({ price, cuantity, text }){
+export function ButtonShopping({ price, cuantity, text, onClick }){
   return (
-    <ButtonShoppingStyled>
+    <ButtonShoppingStyled onClick={onClick}>
       <span className='cuantity'>{cuantity}</span>
       <span className='text'>{text}</span>
       <span className='price'>{price}</span>

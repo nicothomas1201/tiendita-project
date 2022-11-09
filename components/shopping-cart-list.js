@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import ShoppingCartItem from './shopping-cart-item'
 import { ButtonShopping } from './button'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 
 const ShoppingCartListStyled = styled.div`
@@ -36,6 +37,7 @@ const ShoppingCartListStyled = styled.div`
 
 function ShoppingCartList({ cart, setCart }) {
   let [ total, setTotal ] = useState() 
+  const router = useRouter()
 
   useEffect(() => {
     let prices = cart.map(( item  ) => item.price.offert ? item.price.offert : item.price )
@@ -50,12 +52,16 @@ function ShoppingCartList({ cart, setCart }) {
     setCart([])
   }
 
+  function handleClickPay(){
+    router.push('/pay')
+  }
+
   return (
     <ShoppingCartListStyled>
       { cart.map( (item, index) => <ShoppingCartItem setCart={setCart} product={item} key={index} /> )}
       <div className="footer">
         <h4 onClick={handleClick} className="delete-cart">Vaciar canasta</h4>
-        <ButtonShopping cuantity={cart.length} text="ir a pagar" price={`$${total}`} />
+        <ButtonShopping onClick={handleClickPay} cuantity={cart.length} text="ir a pagar" price={`$${total}`} />
       </div>
     </ShoppingCartListStyled>
     
