@@ -5,6 +5,7 @@ import Overlay from './overlay'
 import ModalContentBase from './modal-content-base'
 import ModalProduct from './modal-product'
 import ModalCart from './modal-cart'
+import ModalPay from './modal-pay'
 
 
 
@@ -43,6 +44,10 @@ function Modal({modal, setModal, setAddress, product, address}){
       }
       case 'location':{
         return <ModalLocation setAddress={setAddress} setModal={setModal}/>
+      }
+
+      case 'pay':{
+        return <ModalPay />
       }
 
       default: console.log('working on')

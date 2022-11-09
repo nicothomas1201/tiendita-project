@@ -7,6 +7,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { Button } from '../components/button'
 import { useRouter } from 'next/router'
+import Modal from '../components/modal-portal'
 
 const PayStyled = styled.div`
   background: var(--bg);
@@ -81,6 +82,7 @@ const PayStyled = styled.div`
 function Pay() {
   let [ cart, setCart ] = useState([])
   let [total, setTotal] = useState(0)
+  let [ modal, setModal ] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -101,9 +103,18 @@ function Pay() {
     router.push('/')
   }
 
+  function handleSubmit(e){
+    e.preventDefault()
+    setModal({ type: 'pay', show: true})
+  }
+
   return (
     <Layout>
       <PayStyled>
+        <Modal 
+          modal={modal}
+          setModal={setModal} />
+
         <div className="header">
           <div className="button" onClick={handleClick}>
             <ButtonCloseModal icon={
@@ -120,14 +131,16 @@ function Pay() {
             }            
           </div>
 
-          <form className="form">
+          <form className="form" onSubmit={handleSubmit}>
+
             <div className="section">
               <label className="text" htmlFor="email">Correo electronico</label>
-              <input className="input" id="email" type="email" placeholder="example@gmail.com" />
+              <input required className="input" id="email" type="email" placeholder="example@gmail.com" />
             </div>
+
             <div className="section">
               <label className="text" htmlFor="name">Nombre de la tarjeta</label>
-              <input className="input" id="name" type="text" placeholder="nombre" />
+              <input required className="input" id="name" type="text" placeholder="nombre" />
             </div>
             <Button text={`Pagar $${total}`} />
           </form>
