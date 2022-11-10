@@ -15,12 +15,13 @@ const ShoppingCartListStyled = styled.div`
     padding: 1.5rem 1rem;
     background: var(--white);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; 
+    gap: 1rem;
     position: fixed;
     bottom: 0;
     right: 0;
-    inline-size: 35.125rem;
+    inline-size: 100%;
+    max-inline-size: 35.125rem;
     box-sizing: border-box ;
     /* inline-size: 100%; */
 
@@ -29,8 +30,17 @@ const ShoppingCartListStyled = styled.div`
       color: var(--boulder);
       margin: 0;
       cursor: pointer ;
+      text-align: center; 
     }
   
+  }
+
+  @media screen and (min-width: 426px){
+    .footer{
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 
 `

@@ -33,7 +33,10 @@ const PayStyled = styled.div`
 
   .main{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    gap: 1.5rem;
+    flex-direction: column;
+    /* align-items: center;  */
 
     .products-container{
       display: flex;
@@ -42,16 +45,16 @@ const PayStyled = styled.div`
       background: #ffffff;
       border-radius: 1rem;
       box-shadow: 0px 11px 29px 0px #0000000D;
-      max-inline-size: 39.4375rem;
-      inline-size: 100%;
+      /* inline-size: 100%; */
+      flex: 1;
     }
-
+    
     .form{
-      max-inline-size: 25.8125rem;
       inline-size: 100%;
       display: flex;
       flex-direction: column;
       gap: 2rem;
+      
 
       .section{
         display: flex;
@@ -73,6 +76,26 @@ const PayStyled = styled.div`
           box-shadow: 0px 1px 1px 0px #0000000A;
           box-shadow: 0px 2px 5px 0px #00000014;
         }
+      }
+    }
+  }
+
+  @media screen and (min-width: 980px){
+    .main{
+      flex-direction: row;
+      justify-content: space-between;
+
+      .products-container{
+        max-inline-size: 39.4375rem;
+        flex: 0;
+        inline-size: 100%;
+      }
+      
+      .form{
+        max-inline-size: 25.8125rem;
+        flex: 0;
+        inline-size: 100%;
+
       }
     }
   }

@@ -12,7 +12,6 @@ const SectionProductsStyled = styled.section`
   background-color: var(--white);
   border-radius: 1rem;
 
-
   .title{
     font: var(--headline3);
     color: var(--black);

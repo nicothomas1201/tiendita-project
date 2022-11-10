@@ -1,10 +1,14 @@
 import styled from 'styled-components'
 
 const LayoutStyled = styled.div`
-  max-inline-size: 80.375rem;
   margin: auto;
   padding-block-end: 2.5rem;
-  position: relative;
+  padding-inline-start: 1rem;
+  padding-inline-end: 1rem;
+  
+  @media screen and (min-width: 1281px){
+    max-inline-size: 80.375rem;    
+  }
 
 `
 

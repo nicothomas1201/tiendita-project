@@ -9,7 +9,7 @@ const BannerStyled = styled.div`
     position: relative;
     max-inline-size: 100%;
     inline-size: 100%;
-    block-size: 15.625rem;
+    block-size: 8.25rem;
     border-radius: 1rem;
     overflow: hidden;
     background-image: url(${banner.src});
@@ -25,11 +25,21 @@ const BannerStyled = styled.div`
 
       .title{
         color: var(--white);
-        font: var(--headline1);
         margin: 0;
+        font: var(--body2-bold);
+        text-align: center;
       }
-
-
+    }
+  }
+  
+  @media screen and (min-width: 700px){
+    .banner-img{
+      block-size: 15.625rem;
+      .banner-content{
+        .title{
+          font: var(--headline1);
+        }
+      }
     }
   }
   

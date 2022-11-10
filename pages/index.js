@@ -17,7 +17,7 @@ export default function Home() {
   let [ address, setAddress ] = useState('México City Marriott Reforma Hotel Puta')
   let [ oneSelectProduct, setOneProduct ] = useState()
   let [ isAdded, setIsAdded ] = useState(false)
-  let { cart, setCart } = useCartContext() 
+  let { cart } = useCartContext() 
 
   useEffect(() => {
     if(db){

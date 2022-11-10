@@ -8,13 +8,17 @@ import { useState, useEffect } from 'react'
 import db from '../db'
 
 const ModalProductStyled = styled.div`
+  inline-size: 100%;
   overflow: auto;
   block-size: 420px;
+  inline-size: 100%;
 
   .product-container{
     display: flex;
     gap: 1.5rem;
     inline-size: 100%;
+    flex-direction: column;
+    align-items: center;
 
     .product-details{
       color: var(--cocoabrown);
@@ -22,7 +26,7 @@ const ModalProductStyled = styled.div`
       flex-direction: column;
       gap: 1rem;
       flex-grow: 2;
-
+      
 
       .title-name{
         font: var(--headline1);
@@ -63,9 +67,8 @@ const ModalProductStyled = styled.div`
 
         .select-actions{
           display: flex;
-          align-items: center ;
-          justify-content: space-between;
-          gap: 2.5rem;
+          gap: 1.5rem;
+          flex-direction: column;
 
           button{
             flex: 1;
@@ -76,7 +79,44 @@ const ModalProductStyled = styled.div`
   }
 
   .sugest-products{
+    display: flex;
     margin-block-start: 2.5rem;
+    
+    overflow: auto;
+  }
+
+  @media screen and (min-width: 517px){
+    .product-container{
+      .product-details{
+        .select{
+          .select-actions{
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2.5rem;
+          }
+        }
+      }
+    }
+
+
+  }
+
+  @media screen and (min-width: 996px){
+
+    .product-container{
+      flex-direction: row;
+      .product-details{
+        .select{
+          .select-actions{
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2.5rem;
+          }
+        }
+      }
+    }
   }
 
 `
